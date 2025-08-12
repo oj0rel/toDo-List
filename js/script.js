@@ -1,11 +1,29 @@
+const criarTarefa = (evento) => {
+    evento.preventDefault();
+
+    const lista = document.querySelector("[data-list]");
+    const input = document.querySelector("[data-form-input]");
+    const valor = input.value;
+
+    const tarefa = document.createElement("li");
+    tarefa.classList.add("task");
+    const conteudo = `<p class="content">${valor}</p>`;
+
+    tarefa.innerHTML = conteudo; //<li class="task"><p class="content">${valor}</p></li>
+    lista.appendChild(tarefa);
+    
+    input.value = "";
+};
+
 const novaTarefa = document.querySelector("[data-form-button]");
 
-novaTarefa.addEventListener('click', () => {
-    const tarefa = document.querySelector("[data-form-input]")
-    const valor = tarefa.value;
+novaTarefa.addEventListener('click', criarTarefa);
 
-    console.log(valor);
-});
+// Criação de Elementos
+{/* <li><p></p></li> */}
+// createElement(); -> cria um elemento.
+// appendChild(); -> insere um elemento dentro da tag anterior
+// innerHTML(); -> insere html através do js
 
 
 // EVENTO: possui 3 partes
