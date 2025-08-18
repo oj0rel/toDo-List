@@ -10,14 +10,35 @@ const criarTarefa = (evento) => {
     const conteudo = `<p class="content">${valor}</p>`;
 
     tarefa.innerHTML = conteudo; //<li class="task"><p class="content">${valor}</p></li>
+
     lista.appendChild(tarefa);
-    
+    tarefa.appendChild(BotaoConclui());
     input.value = "";
 };
 
 const novaTarefa = document.querySelector("[data-form-button]");
 
-novaTarefa.addEventListener('click', criarTarefa);
+novaTarefa.addEventListener('click', criarTarefa); //Referência de função
+
+// Criando um componente
+const BotaoConclui = () => {
+    const criarBotao = document.createElement("button");
+    criarBotao.classList.add("check-button");
+    criarBotao.innerText = 'Concluir';
+
+    criarBotao.addEventListener('click', concluirTarefa)
+
+    return criarBotao;
+}
+
+const concluirTarefa = (evento) => {
+    const finalizar = evento.target // button => button
+    const tarefaCompleta = finalizar.parentElement
+    tarefaCompleta.classList.toggle('done'); //devolve um True ou False
+}
+
+//criarTarefa - vai ser feito uma referência, e só acontecerá em um evento
+//criarTarefa() - vai ser executado assim que colocar
 
 // Criação de Elementos
 {/* <li><p></p></li> */}
