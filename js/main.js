@@ -1,3 +1,5 @@
+import BotaoConclui from "../componentes/concluirTarefa.js";
+
 const criarTarefa = (evento) => {
     evento.preventDefault();
 
@@ -9,7 +11,10 @@ const criarTarefa = (evento) => {
     tarefa.classList.add("task");
     const conteudo = `<p class="content">${valor}</p>`;
 
-    tarefa.innerHTML = conteudo; //<li class="task"><p class="content">${valor}</p></li>
+    tarefa.innerHTML = conteudo;
+
+    // seria basicamente isso que está sendo feito
+    // <li class="task"><p class="content">${valor}</p></li>
 
     lista.appendChild(tarefa);
     tarefa.appendChild(BotaoConclui());
@@ -19,23 +24,6 @@ const criarTarefa = (evento) => {
 const novaTarefa = document.querySelector("[data-form-button]");
 
 novaTarefa.addEventListener('click', criarTarefa); //Referência de função
-
-// Criando um componente
-const BotaoConclui = () => {
-    const criarBotao = document.createElement("button");
-    criarBotao.classList.add("check-button");
-    criarBotao.innerText = 'Concluir';
-
-    criarBotao.addEventListener('click', concluirTarefa)
-
-    return criarBotao;
-}
-
-const concluirTarefa = (evento) => {
-    const finalizar = evento.target // button => button
-    const tarefaCompleta = finalizar.parentElement
-    tarefaCompleta.classList.toggle('done'); //devolve um True ou False
-}
 
 //criarTarefa - vai ser feito uma referência, e só acontecerá em um evento
 //criarTarefa() - vai ser executado assim que colocar
@@ -67,3 +55,8 @@ const concluirTarefa = (evento) => {
 // const multiplicar = (num1, num2) => console.log(num1*num2);
 
 // multiplicar(10, 10);
+
+
+// Para criar um componente
+// PascalCase
+// Arrow Function
